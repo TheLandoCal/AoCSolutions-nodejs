@@ -1,15 +1,13 @@
-Day 1 - Advent of Code (2015) Solution
+Advent of Code Node.js Solution
 =========
 
-Node.js solution to Day 1: Not Quite Lisp from 2015. All [Advent of Code](http://adventofcode.com/) exercises were developed by [Eric Wastl](http://was.tl/).
-
-Node.js server is configured to listen on [port 3000](http://localhost:3000).
+All [Advent of Code](http://adventofcode.com/) exercises were developed by [Eric Wastl](http://was.tl/).
 
 ## Installation
 
   Use the following command to download an install this solution.
 
-  `npm install https://github.com/futuregarnet/adventofcode/tree/master/2015/nodejs/day1`
+  `npm install https://github.com/futuregarnet/AoCSolutions-nodejs.git`
 
 ## Usage
 
@@ -25,4 +23,4 @@ Node.js server is configured to listen on [port 3000](http://localhost:3000).
 
 ## Release History
 
-* 0.1.0 Initial release
+* 0.1.1 Initial release
