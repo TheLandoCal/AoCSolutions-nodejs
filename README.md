@@ -1,7 +1,7 @@
 Advent of Code Node.js Solution
 =========
 
-All [Advent of Code](http://adventofcode.com/) exercises were developed by [Eric Wastl](http://was.tl/).
+Node.js server is configured to listen on [port 3000](http://localhost:3000).
 
 ## Installation
 
