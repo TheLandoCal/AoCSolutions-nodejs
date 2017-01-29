@@ -25,4 +25,4 @@ Node.js server is configured to listen on [port 3000](http://localhost:3000).
 
 ## Release History
 
-* 0.1.1 Initial release
+* 0.2.0 Initial release
