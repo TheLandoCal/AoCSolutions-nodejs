@@ -17,10 +17,7 @@
         "javascript"
     ],
     "author": "futuregarnet",
-    "license": [{
-        "type": "MIT",
-        "url": "https://github.com/futuregarnet/AoCSolutions-nodejs/blob/master/LICENSE"
-    }],
+    "license": "MIT",
     "dependencies": {
         "bootstrap": "^3.3.7",
         "express": "^4.14.1",
