@@ -5,8 +5,10 @@ All [Advent of Code](http://adventofcode.com/) exercises were developed by [Eric
 
 ## Installation
 
-  Use the following command to download and install this solution.
+  Use the following commands to download and install this solution.
+
   `git clone https://github.com/futuregarnet/AoCSolutions-nodejs.git && cd AoCSolutions-nodejs`
+
   `npm install https://github.com/futuregarnet/AoCSolutions-nodejs.git`
 
 ## Usage
