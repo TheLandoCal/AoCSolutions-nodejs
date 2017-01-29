@@ -2,6 +2,7 @@ Advent of Code Node.js Solution
 =========
 
 Node.js server is configured to listen on [port 3000](http://localhost:3000).
+Check out the modules folders for the functions used in the solutions.
 
 ## Installation
 

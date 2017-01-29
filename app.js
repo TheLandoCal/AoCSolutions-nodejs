@@ -11,7 +11,8 @@ var title = 'Advent of Code Node.js Solutions';
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-app.use('/static', express.static(__dirname + '/node_modules/bootstrap/dist/'));
+app.use(express.static('static'));
+app.use(express.static('node_modules/bootstrap/dist/'));
 
 app.get(['/', '/2015', '/2015/day1'], function(req, res) {
     res.render('day', {
