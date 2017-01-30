@@ -11,9 +11,10 @@ var title = 'Advent of Code Node.js Solutions';
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-app.use('/static', express.static(__dirname + '/node_modules/bootstrap/dist/'));
+app.use(express.static('node_modules/bootstrap/dist/'));
+app.use(express.static('static'));
 
-app.get(['/', '/2015', '/2015/day1'], function(req, res) {
+app.get(['/', '/2015', '/2015/day/1'], function(req, res) {
     res.render('day', {
         p1Solution: instructions.ptGetFinalFloor(fs.readFileSync('./static/2015/day1/input.txt', 'utf-8')),
         p2Solution: instructions.ptFindBasementEntry(fs.readFileSync('./static/2015/day1/input.txt', 'utf-8')),
@@ -23,7 +24,7 @@ app.get(['/', '/2015', '/2015/day1'], function(req, res) {
     });
 });
 
-app.get(['/2016', '/2016/day1'], function(req, res) {
+app.get(['/2016', '/2016/day/1'], function(req, res) {
     res.render('day', {
         p1Solution: instructions.tgCalcShortestPath(fs.readFileSync('./static/2016/day1/input.txt', 'utf-8')),
         p2Solution: instructions.tgFindFirstIntersection(fs.readFileSync('./static/2016/day1/input.txt', 'utf-8')),

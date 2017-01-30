@@ -26,7 +26,7 @@ module.exports = {
     ptGetFinalFloor: function(input) {
         var floor = 0;
 
-        for (i = 0; i < input.length; i++) {
+        for (var i = 0, len = input.length; i < len; i++) {
             floor += input[i] == '(' ? 1 : -1;
         }
         return floor;
@@ -34,7 +34,7 @@ module.exports = {
     ptFindBasementEntry: function(input) {
         var floor = 0;
 
-        for (i = 0; i < input.length; i++) {
+        for (var i = 0, len = input.length; i < len; i++) {
             floor += input[i] == '(' ? 1 : -1;
             if (floor < 0)
                 return i + 1;
@@ -62,7 +62,7 @@ module.exports = {
         // Positive x: axis is 1 more than a multiple of 4
         // Negative x: axis is 1 less than a multiple of 4
 
-        for (i = 0; i < instructions.length; i++) {
+        for (var i = 0, len = instructions.length; i < len; i++) {
             var result = getEndPoint(instructions[i], x, y, axis);
             x = result[0];
             y = result[1];
@@ -81,7 +81,7 @@ module.exports = {
         ];
 
         // TODO: Write algorithm for intersection
-        for (i = 0; i < instructions.length; i++) {
+        for (var i = 0, len = instructions.length; i < len; i++) {
             var result = getEndPoint(instructions[i], x, y, axis);
             var currentX = result[0],
                 currentY = result[1];
@@ -96,14 +96,14 @@ module.exports = {
             coordinates.push([currentX, currentY]);
             if (currentX === x) {
                 if (currentY > y) {
-                    for (yVisited = y + 1; yVisited < currentY; yVisited++) {
+                    for (var yVisited = y + 1; yVisited < currentY; yVisited++) {
                         if (hasVisited(coordinates, [x, yVisited])) {
                             return Math.abs(x) + Math.abs(yVisited);
                         }
                         coordinates.push([x, yVisited]);
                     }
                 } else {
-                    for (yVisited = y - 1; yVisited > currentY; yVisited--) {
+                    for (var yVisited = y - 1; yVisited > currentY; yVisited--) {
                         if (hasVisited(coordinates, [x, yVisited])) {
                             return Math.abs(x) + Math.abs(yVisited);
                         }
@@ -112,14 +112,14 @@ module.exports = {
                 }
             } else {
                 if (currentX > x) {
-                    for (xVisited = x + 1; xVisited < currentX; xVisited++) {
+                    for (var xVisited = x + 1; xVisited < currentX; xVisited++) {
                         if (hasVisited(coordinates, [xVisited, y])) {
                             return Math.abs(xVisited) + Math.abs(y);
                         }
                         coordinates.push([xVisited, y]);
                     }
                 } else {
-                    for (xVisited = x - 1; xVisited > currentX; xVisited--) {
+                    for (var xVisited = x - 1; xVisited > currentX; xVisited--) {
                         if (hasVisited(coordinates, [xVisited, y])) {
                             return Math.abs(xVisited) + Math.abs(y);
                         }
