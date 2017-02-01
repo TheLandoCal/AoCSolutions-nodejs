@@ -23,6 +23,19 @@ app.use(express.static('node_modules/bootstrap/dist/'));
 // Configure router
 var router = express.Router();
 
+router.route('/')
+    .get(function(req, res) {
+        var puzzle = puzzles.findOne({ 'year': '2015', 'day': '1' });
+        var solutions = require('./modules/' + puzzle.year + '/day' + puzzle.day + '_solution');
+
+        res.render('day', {
+            p1Solution: solutions.p1Solution(puzzle.input),
+            p2Solution: solutions.p2Solution(puzzle.input),
+            dayTitle: puzzle.title,
+            dayNumber: puzzle.day
+        });
+    });
+
 router.route(['/:year/day/:day'])
     .get(function(req, res) {
         var puzzle = puzzles.findOne({ 'year': req.params.year, 'day': req.params.day });
