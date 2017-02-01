@@ -20,7 +20,6 @@ app.set('view engine', 'handlebars');
 app.use(express.static('node_modules/bootstrap/dist/'));
 app.use(express.static('static'));
 
-
 // Configure router
 var router = express.Router();
 
