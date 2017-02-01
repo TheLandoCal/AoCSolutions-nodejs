@@ -1,84 +1,39 @@
+// Import required packages
 var express = require('express');
 var exphbs = require('express-handlebars');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var Puzzle = require('./models/puzzles.js');
+var fs = require("fs");
+var loki = require('lokijs');
 
-var app = express();
-
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://aoc:Pass4Monitor.@ds137729.mlab.com:37729/aocnodejs');
-
+// Create Puzzle DB and insert puzzles
+var db = new loki('Puzzle');
+var puzzles = db.addCollection('puzzles', { indices: ['title'] });
+var puzzleData = JSON.parse(fs.readFileSync('./models/puzzle.json', 'utf-8'))
+    .forEach(puzzle => puzzles.insert(puzzle));
 
 var port = process.env.PORT || 3000;
 
+// Configure express server
+var app = express();
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
 
 app.use(express.static('node_modules/bootstrap/dist/'));
 app.use(express.static('static'));
 
 
+// Configure router
 var router = express.Router();
-
-
-router.route('/puzzles')
-    .post(function(req, res) {
-        var puzzle = new Puzzle();
-        puzzle.year = req.body.year;
-        puzzle.title = req.body.title;
-        puzzle.day = req.body.day;
-        puzzle.input = req.body.input;
-
-        puzzle.save(function(err) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.json({ message: 'Puzzle \'' + puzzle.title + '\' saved!' });
-        });
-    });
 
 router.route(['/:year/day/:day'])
     .get(function(req, res) {
-        Puzzle.findOne({ 'year': req.params.year, 'day': req.params.day }, function(err, puzzle) {
-            // console.log(puzzle);
-            var solutions = require('./modules/' + puzzle.year + '/day' + puzzle.day + '_solution');
-            res.render('day', {
-                p1Solution: solutions.p1Solution(puzzle.input),
-                p2Solution: solutions.p2Solution(puzzle.input),
-                dayTitle: puzzle.title,
-                dayNumber: puzzle.day
-            });
-        });
-    })
-    .put(function(req, res) {
-        Puzzle.findOne({ 'year': req.params.year, 'day': req.params.day }, function(err, puzzle) {
-            if (err) {
-                res.send(err);
-            }
+        var puzzle = puzzles.findOne({ 'year': req.params.year, 'day': req.params.day });
+        var solutions = require('./modules/' + puzzle.year + '/day' + puzzle.day + '_solution');
 
-            puzzle.input = req.body.input;
-            puzzle.title = req.body.title;
-
-            puzzle.save(function(err) {
-                res.json({ message: 'Puzzle \'' + puzzle.title + '\' updated!' });
-            });
-        });
-    })
-    .delete(function(req, res) {
-        Puzzle.findOne({ 'year': req.params.year, 'day': req.params.day }, function(err, puzzle) {
-            puzzle.remove(function(err, puzzle) {
-                if (err) {
-                    res.send(err);
-                }
-
-                res.json({ message: 'Puzzle \'' + puzzle.title + '\' deleted!' });
-            });
+        res.render('day', {
+            p1Solution: solutions.p1Solution(puzzle.input),
+            p2Solution: solutions.p2Solution(puzzle.input),
+            dayTitle: puzzle.title,
+            dayNumber: puzzle.day
         });
     });
 
