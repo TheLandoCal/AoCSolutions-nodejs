@@ -26,4 +26,4 @@ Check out the modules folders for the functions used in the solutions.
 
 ## Release History
 
-* 0.2.5 Initial release
+* 0.4.2 Initial release

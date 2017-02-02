@@ -22,7 +22,7 @@ var hasVisited = function(coordinatesVisited, coordinate) {
     return false;
 };
 
-var tgCalcShortestPath = function(input) {
+var calcShortestPath = function(input) {
     var instructions = input.split(', ');
 
     var x = 0;
@@ -52,7 +52,7 @@ var tgCalcShortestPath = function(input) {
     return Math.abs(x) + Math.abs(y); // Most direct path is sum of (x, y) coordinates.
 };
 
-var tgFindFirstIntersection = function(input) {
+var findFirstIntersection = function(input) {
     var instructions = input.split(', ');
     var axis = 0;
     var x = 0;
@@ -116,6 +116,6 @@ var tgFindFirstIntersection = function(input) {
 };
 
 module.exports = {
-    p1Solution: tgCalcShortestPath,
-    p2Solution: tgFindFirstIntersection
+    p1Solution: calcShortestPath,
+    p2Solution: findFirstIntersection
 };

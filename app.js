@@ -8,7 +8,9 @@ var loki = require('lokijs');
 var db = new loki('Puzzle');
 var puzzles = db.addCollection('puzzles', { indices: ['title'] });
 var puzzleData = JSON.parse(fs.readFileSync('./models/puzzle.json', 'utf-8'))
-    .forEach(puzzle => puzzles.insert(puzzle));
+    .forEach(function(puzzle) {
+        puzzles.insert(puzzle);
+    });
 
 var port = process.env.PORT || 3000;
 
@@ -38,12 +40,33 @@ router.route('/')
 
 router.route(['/:year/day/:day'])
     .get(function(req, res) {
-        var puzzle = puzzles.findOne({ 'year': req.params.year, 'day': req.params.day });
+        var puzzle = puzzles.findOne({ '$and': [{ 'year': req.params.year }, { 'day': req.params.day }] });
         var solutions = require('./modules/' + puzzle.year + '/day' + puzzle.day + '_solution');
+
+        // Grab all available days in puzzles
+        var days15 = [];
+        puzzles.chain()
+            .find({ 'year': '2015' })
+            .compoundsort(['day', true])
+            .data()
+            .forEach(function(puzzle15) {
+                days15.push(puzzle15.day);
+            });
+
+        var days16 = [];
+        puzzles.chain()
+            .find({ 'year': '2016' })
+            .compoundsort(['day', true])
+            .data()
+            .forEach(function(puzzle16) {
+                days16.push(puzzle16.day);
+            });
 
         res.render('day', {
             p1Solution: solutions.p1Solution(puzzle.input),
             p2Solution: solutions.p2Solution(puzzle.input),
+            days2015: days15,
+            days2016: days16,
             dayTitle: puzzle.title,
             dayNumber: puzzle.day
         });

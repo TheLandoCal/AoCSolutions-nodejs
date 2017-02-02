@@ -1,4 +1,4 @@
-var ptGetFinalFloor = function(input) {
+var getFinalFloor = function(input) {
     var floor = 0;
 
     for (var i = 0, len = input.length; i < len; i++) {
@@ -7,7 +7,7 @@ var ptGetFinalFloor = function(input) {
     return floor;
 };
 
-var ptFindBasementEntry = function(input) {
+var findBasementEntry = function(input) {
     var floor = 0;
 
     for (var i = 0, len = input.length; i < len; i++) {
@@ -20,6 +20,6 @@ var ptFindBasementEntry = function(input) {
 };
 
 module.exports = {
-    p1Solution: ptGetFinalFloor,
-    p2Solution: ptFindBasementEntry
+    p1Solution: getFinalFloor,
+    p2Solution: findBasementEntry
 };
