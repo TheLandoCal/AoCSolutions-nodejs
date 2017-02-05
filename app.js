@@ -1,7 +1,7 @@
 // Import required packages
 var express = require('express');
 var exphbs = require('express-handlebars');
-var fs = require("fs");
+var fs = require('fs');
 var loki = require('lokijs');
 
 // Create Puzzle DB and insert puzzles
