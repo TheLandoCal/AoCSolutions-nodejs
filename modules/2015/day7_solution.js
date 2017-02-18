@@ -84,7 +84,7 @@ var manualOverride = function(input) {
 
     /*jshint -W069 */
     /*Disable Warning Justification:
-        Using bracket notation so Google Closure Compiler 
+        Using bracket notation so Google Closure Compiler
         ADVANCED_OPTIMIZATIONS will keep the original property names. */
     circuits['b'] = signalA;
     /*jshint +W069 */
