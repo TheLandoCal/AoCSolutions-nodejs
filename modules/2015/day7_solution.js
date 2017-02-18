@@ -47,7 +47,12 @@ var evaluateCircuits = function(circuits) {
 var getSignal = function(input) {
     var instructions = input.split('\n'),
         circuits = [],
-        wantedWire = 'a'; // 'd' for testing, 'a' for Part 1
+        wantedWire = 'a';
+
+    // If running as a test (npm test)
+    if (process.argv[1].endsWith('grunt')) { // Use endsWith('app.js') if you want to check for npm start
+        wantedWire = 'd';
+    }
 
     for (var i = 0; i < instructions.length; i++) {
         var result = instructions[i].split(' -> '),

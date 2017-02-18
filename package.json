@@ -1,6 +1,6 @@
 {
     "name": "aoc-nodejs",
-    "version": "0.7.1",
+    "version": "0.8.0",
     "description": "Node.js solutions to Advent of Code Exercises",
     "main": "app.js",
     "scripts": {
