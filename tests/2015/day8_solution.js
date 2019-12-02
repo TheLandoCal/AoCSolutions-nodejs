@@ -1,5 +1,5 @@
 var should = require('chai').should(),
-    solutions = require('../../modules/2015/day8_solution'),
+    solutions = require('../../src/modules/2015/day8_solution'),
     diffCodeMemChar = solutions.p1Solution,
     diffEncodedCodeChar = solutions.p2Solution;
 

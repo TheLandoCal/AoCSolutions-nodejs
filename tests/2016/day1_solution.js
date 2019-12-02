@@ -1,5 +1,5 @@
 var should = require('chai').should(),
-    solutions = require('../../modules/2016/day1_solution'),
+    solutions = require('../../src/modules/2016/day1_solution'),
     calcShortestPath = solutions.p1Solution,
     findFirstIntersection = solutions.p2Solution;
 

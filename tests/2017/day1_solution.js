@@ -1,5 +1,5 @@
 var should = require('chai').should(),
-    solutions = require('../../modules/2017/day1_solution'),
+    solutions = require('../../src/modules/2017/day1_solution'),
     getSumOfRepeatingDigits = solutions.p1Solution,
     getSumOfRot13Digits = solutions.p2Solution;
 

@@ -1,5 +1,5 @@
 var should = require('chai').should(),
-    solutions = require('../../modules/2015/day7_solution'),
+    solutions = require('../../src/modules/2015/day7_solution'),
     getSignal = solutions.p1Solution;
 
 describe('#getSignal', function() {

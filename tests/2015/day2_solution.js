@@ -1,5 +1,5 @@
 var should = require('chai').should(),
-    solutions = require('../../modules/2015/day2_solution'),
+    solutions = require('../../src/modules/2015/day2_solution'),
     getTotalWrappingPaperArea = solutions.p1Solution,
     getTotalRibbonLength = solutions.p2Solution;
 

@@ -1,5 +1,5 @@
 var should = require('chai').should(),
-    solutions = require('../../modules/2015/day1_solution'),
+    solutions = require('../../src/modules/2015/day1_solution'),
     getFinalFloor = solutions.p1Solution,
     findBasementEntry = solutions.p2Solution;
 

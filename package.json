@@ -16,7 +16,7 @@
         "nodejs",
         "javascript"
     ],
-    "author": "futuregarnet",
+    "author": "CallieLinux",
     "license": "MIT",
     "dependencies": {
         "bootstrap": "^3.3.7",

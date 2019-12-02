@@ -1,4 +1,4 @@
-var solutions = require('../../modules/2018/day1_solution'),
+var solutions = require('../../src/modules/2018/day1_solution'),
   calculateChangesFromZero = solutions.p1Solution,
   findDuplicateFrequency = solutions.p2Solution;
 
