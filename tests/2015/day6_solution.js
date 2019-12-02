@@ -1,5 +1,4 @@
-var should = require('chai').should(),
-    solutions = require('../../src/modules/2015/day6_solution'),
+var solutions = require('../../src/modules/2015/day6_solution'),
     findLitLights = solutions.p1Solution,
     findTotalBrightness = solutions.p2Solution;
 

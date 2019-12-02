@@ -1,5 +1,4 @@
-var should = require('chai').should(),
-    solutions = require('../../src/modules/2015/day4_solution'),
+var solutions = require('../../src/modules/2015/day4_solution'),
     getLowestNum5Zeros = solutions.p1Solution;
 
 describe('#getLowestNum5Zeros', function() {

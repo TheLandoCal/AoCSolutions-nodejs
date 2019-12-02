@@ -8,7 +8,7 @@ module.exports = function(grunt) {
                 ignoreLeaks: false,
                 reporter: 'spec'
             },
-            all: { src: ['tests/*/*.js'] }
+            all: { src: ['tests/**/*.js'] }
         }
     });
 

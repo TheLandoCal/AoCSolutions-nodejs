@@ -1,5 +1,4 @@
-var should = require('chai').should(),
-    solutions = require('../../src/modules/2015/day3_solution'),
+var solutions = require('../../src/modules/2015/day3_solution'),
     countSoloSantaHouses = solutions.p1Solution,
     countDuoSantaHouses = solutions.p2Solution;
 
