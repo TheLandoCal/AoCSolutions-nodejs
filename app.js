@@ -44,6 +44,16 @@ puzzles
     days17.push(puzzle17.day);
   });
 
+  var days18 = [];
+  puzzles
+    .chain()
+    .find({ year: "2018" })
+    .compoundsort(["day", true])
+    .data()
+    .forEach(function(puzzle18) {
+      days18.push(puzzle18.day);
+    });
+
 var port = process.env.PORT || 3000;
 
 // Configure express server
@@ -71,6 +81,7 @@ router.route("/").get(function(req, res) {
     days2015: days15,
     days2016: days16,
     days2017: days17,
+    days2018: days18,
     dayTitle: puzzle.title,
     dayNumber: puzzle.day
   });
@@ -92,6 +103,7 @@ router.route(["/:year/day/:day"]).get(function(req, res) {
     days2015: days15,
     days2016: days16,
     days2017: days17,
+    days2018: days18,
     dayTitle: puzzle.title,
     dayNumber: puzzle.day
   });
