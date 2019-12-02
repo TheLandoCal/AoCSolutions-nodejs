@@ -41,7 +41,8 @@ function getPuzzleByDay(year, day) {
     days2015: loadPuzzlesByYear(puzzles, '2015'),
     days2016: loadPuzzlesByYear(puzzles, '2016'),
     days2017: loadPuzzlesByYear(puzzles, '2017'),
-    days2018: loadPuzzlesByYear(puzzles, '2018')
+    days2018: loadPuzzlesByYear(puzzles, '2018'),
+    days2019: loadPuzzlesByYear(puzzles, '2019')
   };
 }
 
