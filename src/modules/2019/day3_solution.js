@@ -8,10 +8,7 @@ const getCoordinates = function(path) {
   );
 };
 
-const getIntersections = function(path1, path2) {
-  const path1Coordinates = new Set(getCoordinates(path1).slice(1));
-  const path2Coordinates = new Set(getCoordinates(path2).slice(1));
-
+const getIntersections = function(path1Coordinates, path2Coordinates) {
   const intersections = new Set([...path1Coordinates].filter(x => path2Coordinates.has(x)));
   return Array.from(intersections).map(x => x.split(',').map(y => parseInt(y)));
 };
@@ -41,8 +38,8 @@ const getSubCoordinates = function(coordinate, instruction) {
 };
 
 const getDistanceToClosestIntersection = function(input) {
-  const [path1, path2] = input.split('\n');
-  const intersections = getIntersections(path1.split(','), path2.split(','));
+  const [path1Coordinates, path2Coordinates] = input.split('\n').map(x => getCoordinates(x.split(',')).slice(1));
+  const intersections = getIntersections(new Set(path1Coordinates), new Set(path2Coordinates));
 
   return intersections.reduce((shortestDistance, location) => {
     const currentDistance = location.reduce((acc, val) => Math.abs(acc) + Math.abs(val));
@@ -50,11 +47,17 @@ const getDistanceToClosestIntersection = function(input) {
   }, Number.MAX_SAFE_INTEGER);
 };
 
-const tbd = function(input) {
-  return '???';
+const getFewestCombinedSteps = function(input) {
+  const [path1Coordinates, path2Coordinates] = input.split('\n').map(x => getCoordinates(x.split(',')).slice(1));
+  const intersections = getIntersections(new Set(path1Coordinates), new Set(path2Coordinates));
+
+  return intersections.reduce((fewestSteps, intersection) => {
+    const currentSteps = (path1Coordinates.indexOf(intersection.join(',')) + 1) + (path2Coordinates.indexOf(intersection.join(',')) + 1);
+    return currentSteps < fewestSteps ? currentSteps : fewestSteps;
+  }, Number.MAX_SAFE_INTEGER);
 };
 
 module.exports = {
   p1Solution: getDistanceToClosestIntersection,
-  p2Solution: tbd
+  p2Solution: getFewestCombinedSteps
 };
