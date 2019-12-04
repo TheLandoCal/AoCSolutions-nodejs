@@ -1,66 +1,61 @@
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/2015/day/1">Advent of Code Node.js Solutions</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2015 <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                {{#each days2015}}
-                <li><a href="/2015/day/{{this}}">Day {{this}}</a></li>
-                {{/each}}
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2016 <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                {{#each days2016}}
-                <li><a href="/2016/day/{{this}}">Day {{this}}</a></li>
-                {{/each}}
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2017 <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                {{#each days2017}}
-                <li><a href="/2017/day/{{this}}">Day {{this}}</a></li>
-                {{/each}}
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2018 <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                {{#each days2018}}
-                <li><a href="/2018/day/{{this}}">Day {{this}}</a></li>
-                {{/each}}
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2019 <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                {{#each days2019}}
-                <li><a href="/2019/day/{{this}}">Day {{this}}</a></li>
-                {{/each}}
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-<div class="container">
-    <div class="starter-template">
-        <h1>Day {{dayNumber}} - {{dayTitle}}</h1>
-        <p class="lead">Part 1: The puzzle answer is <strong>{{p1Solution}}</strong>.</p>
-        <p class="lead">Part 2: The puzzle answer is <strong>{{p2Solution}}</strong>.</p>
-        </p>
-    </div>
-    
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/2015/day/1">Advent of Code Node.js Solutions</a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2015 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          {{#each days2015}}
+          <li><a href="/2015/day/{{this}}">Day {{this}}</a></li>
+          {{/each}}
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2016 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          {{#each days2016}}
+          <li><a href="/2016/day/{{this}}">Day {{this}}</a></li>
+          {{/each}}
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2017 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          {{#each days2017}}
+          <li><a href="/2017/day/{{this}}">Day {{this}}</a></li>
+          {{/each}}
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2018 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          {{#each days2018}}
+          <li><a href="/2018/day/{{this}}">Day {{this}}</a></li>
+          {{/each}}
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2019 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          {{#each days2019}}
+          <li><a href="/2019/day/{{this}}">Day {{this}}</a></li>
+          {{/each}}
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="starter-template">
+    <h1>Day {{dayNumber}} - {{dayTitle}}</h1>
+    <p class="lead">Part 1: The puzzle answer is <strong>{{p1Solution}}</strong>.</p>
+    <p class="lead">Part 2: The puzzle answer is <strong>{{p2Solution}}</strong>.</p>
+    </p>
 </div>
