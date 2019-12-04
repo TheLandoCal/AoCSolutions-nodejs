@@ -1,4 +1,4 @@
-var solutions = require('../../src/modules/2015/day9_solution'),
+var solutions = require('./day9_solution'),
   calculateShortestRoute = solutions.p1Solution,
   calculateLongestRoute = solutions.p2Solution;
 

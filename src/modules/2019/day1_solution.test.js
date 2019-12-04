@@ -1,4 +1,4 @@
-var solutions = require('../../src/modules/2019/day1_solution'),
+var solutions = require('./day1_solution'),
   calculateFuelRequirement = solutions.p1Solution,
   calculateRecursiveFuelRequirement = solutions.p2Solution;
 

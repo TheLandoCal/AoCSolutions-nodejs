@@ -1,4 +1,4 @@
-var solutions = require('../../src/modules/2019/day2_solution'),
+var solutions = require('./day2_solution'),
   runOpcode = solutions.runOpcode;
 
 describe('#runOpcode', function() {

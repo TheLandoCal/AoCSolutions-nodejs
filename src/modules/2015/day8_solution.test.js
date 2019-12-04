@@ -1,4 +1,4 @@
-var solutions = require('../../src/modules/2015/day8_solution'),
+var solutions = require('./day8_solution'),
     diffCodeMemChar = solutions.p1Solution,
     diffEncodedCodeChar = solutions.p2Solution;
 

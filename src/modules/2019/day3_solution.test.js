@@ -1,4 +1,4 @@
-var solutions = require('../../src/modules/2019/day3_solution'),
+var solutions = require('./day3_solution'),
   getDistanceToClosestIntersection = solutions.p1Solution,
   getFewestCombinedSteps = solutions.p2Solution;
 

@@ -1,4 +1,4 @@
-var solutions = require('../../src/modules/2015/day1_solution'),
+var solutions = require('./day1_solution'),
     getFinalFloor = solutions.p1Solution,
     findBasementEntry = solutions.p2Solution;
 

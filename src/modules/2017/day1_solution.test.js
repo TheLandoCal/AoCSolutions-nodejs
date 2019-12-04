@@ -1,4 +1,4 @@
-var solutions = require('../../src/modules/2017/day1_solution'),
+var solutions = require('./day1_solution'),
     getSumOfRepeatingDigits = solutions.p1Solution,
     getSumOfRot13Digits = solutions.p2Solution;
 

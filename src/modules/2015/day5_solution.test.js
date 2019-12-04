@@ -1,4 +1,4 @@
-var solutions = require('../../src/modules/2015/day5_solution'),
+var solutions = require('./day5_solution'),
     countNice = solutions.p1Solution,
     countRevisedNice = solutions.p2Solution,
     hasRepeatedPairs = solutions.hasRepeatedPairs,

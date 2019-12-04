@@ -1,4 +1,4 @@
-var solutions = require('../../src/modules/2016/day1_solution'),
+var solutions = require('./day1_solution'),
     calcShortestPath = solutions.p1Solution,
     findFirstIntersection = solutions.p2Solution;
 
