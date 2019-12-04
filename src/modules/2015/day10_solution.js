@@ -27,7 +27,7 @@ const lookAndSay = function(input, iterations) {
       value = `${countInstances(value)}${value}`;
     } else {
       const sequences = groupSequences(value);
-      value = [].concat(...sequences).join('');
+      value = sequences.flat().join('');
     }
   }
 
@@ -39,7 +39,6 @@ const getLengthOf40LookAndSays = function(input) {
 }
 
 const getLengthOf50LookAndSays = function(input) {
-  // TODO: Avoid `RangeError: Maximum call stack size exceeded`
   return lookAndSay(input, 50).length;
 }
 
