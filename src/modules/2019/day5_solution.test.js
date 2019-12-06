@@ -1,16 +1,24 @@
 var solutions = require('./day5_solution'),
-  tbd1 = solutions.p1Solution,
-  tbd2 = solutions.p2Solution;
+  runOpcode = solutions.runOpcode;
 
-describe('#tbd1', function() {
-  it('Tests that some input is some value', function() {
-    tbd1('some input').should.equal('some value');
+describe('#runOpcode', function() {
+  it('Tests that the final state of 1,9,10,3,2,3,11,0,99,30,40,50 is 3500,9,10,70,2,3,11,0,99,30,40,50', function() {
+    runOpcode(null,'1,9,10,3,2,3,11,0,99,30,40,50').should.equal('0');
   });
-});
 
+  it('Tests that the final state of 1,0,0,0,99 is 2,0,0,0,99', function() {
+    runOpcode(null,'1,0,0,0,99').should.equal('0');
+  });
 
-describe('#tbd2', function() {
-  it('Tests that some input is some value', function() {
-    tbd2('some input').should.equal('some value');
+  it('Tests that the final state of 2,3,0,3,99 is 2,3,0,6,99', function() {
+    runOpcode(null,'2,3,0,3,99').should.equal('0');
+  });
+
+  it('Tests that the final state of 2,4,4,5,99,0 is 2,4,4,5,99,9801', function() {
+    runOpcode(null,'2,4,4,5,99,0').should.equal('0');
+  });
+
+  it('Tests that the final state of 1,1,1,4,99,5,6,0,99 is 2,0,0,0,99', function() {
+    runOpcode(null,'1,1,1,4,99,5,6,0,99').should.equal('0');
   });
 });
