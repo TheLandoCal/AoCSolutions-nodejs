@@ -5,6 +5,10 @@ const runOpcode = function(input, rawInstructions) {
     2: 4,
     3: 2,
     4: 2,
+    5: 3,
+    6: 3,
+    7: 4,
+    8: 4,
     99: 1
   };
 
@@ -17,16 +21,25 @@ const runOpcode = function(input, rawInstructions) {
       .split('')
       .map(x => parseInt(x));
     const operation = parseInt(opcode.slice(3).join(''));
-    const numInstructionValues = instructionValuesMap[operation];
+    let numInstructionValues = instructionValuesMap[operation];
     const parameters = instructions
       .slice(instructionPointer + 1, instructionPointer + numInstructionValues)
       .map((p, idx) => {
         return { mode: opcode[2 - idx], value: p };
       });
-    const output = runInstruction(input, operation, parameters, instructions);
-    if (output != null) {
-      outputs.push(output);
+
+    const result = runInstruction(input, operation, parameters, instructions);
+    if (result != null) {
+      if ([5, 6].includes(operation)) {
+        // Handle Jump-based opcodes
+        instructionPointer = result;
+        numInstructionValues = 0;
+      } else if ([4].includes(operation)) {
+        // Handle output-based opcodes
+        outputs.push(result);
+      }
     }
+
     instructionPointer += numInstructionValues;
   }
 
@@ -40,19 +53,23 @@ const runInstruction = function(input, operation, parameters, instructions) {
     return parameter.mode === 1 ? parameter.value : instructions[parameter.value];
   };
 
+  const first = getParameterValue(parameters[0]);
+  const second = parameters[1] ? getParameterValue(parameters[1]) : null;
+
   if (operation === 1) {
-    const first = getParameterValue(parameters[0]);
-    const second = getParameterValue(parameters[1]);
     instructions[parameters[2].value] = first + second;
   } else if (operation === 2) {
-    const first = getParameterValue(parameters[0]);
-    const second = getParameterValue(parameters[1]);
     instructions[parameters[2].value] = first * second;
   } else if (operation === 3) {
     instructions[parameters[0].value] = input;
   } else if (operation === 4) {
-    const output = getParameterValue(parameters[0]);
-    return output;
+    return first;
+  } else if ((operation === 5 && first !== 0) || (operation === 6 && first === 0)) {
+    return second;
+  } else if (operation === 7) {
+    instructions[parameters[2].value] = +(first < second);
+  } else if (operation === 8) {
+    instructions[parameters[2].value] = +(first === second);
   }
 
   return null;
