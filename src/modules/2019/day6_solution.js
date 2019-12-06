@@ -29,11 +29,19 @@ const countTotalOrbits = function(input) {
   return Object.values(graph).flat().length;
 };
 
-const p2Solution = function(input) {
-  return '???';
+const countOrbitalTransfers = function(input) {
+  const graph = graphOrbits(input);
+
+  const you = new Set(graph['YOU']);
+  const san = new Set(graph['SAN']);
+
+  const youPath = new Set([...you].filter(x => !san.has(x)));
+  const sanPath = new Set([...san].filter(x => !you.has(x)));
+
+  return [...youPath, ...sanPath].length;
 };
 
 module.exports = {
   p1Solution: countTotalOrbits,
-  p2Solution
+  p2Solution: countOrbitalTransfers
 };
