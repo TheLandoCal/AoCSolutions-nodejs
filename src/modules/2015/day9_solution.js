@@ -83,6 +83,7 @@ const calculateLongestRoute = function(input) {
 };
 
 module.exports = {
+  permutations,
   p1Solution: calculateShortestRoute,
   p2Solution: calculateLongestRoute
 };
