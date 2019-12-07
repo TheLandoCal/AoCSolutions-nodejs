@@ -1,4 +1,4 @@
-const runOpcode = function(input, rawInstructions) {
+const runOpcode = function(rawInstructions, input) {
   const instructions = rawInstructions.split(',').map(code => parseInt(code));
   const instructionValuesMap = {
     1: 4,
@@ -77,13 +77,13 @@ const runInstruction = function(input, operation, parameters, instructions) {
 
 const printACUnitDiagnosticCode = function(input) {
   const systemId = 1;
-  const outputs = runOpcode(systemId, input);
+  const outputs = runOpcode(input, systemId);
   return outputs[outputs.length - 1];
 };
 
 const printThermalRadiatorControllerDiagnosticCode = function(input) {
   const systemId = 5;
-  const outputs = runOpcode(systemId, input);
+  const outputs = runOpcode(input, systemId);
   return outputs[outputs.length - 1];
 };
 
