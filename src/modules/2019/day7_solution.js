@@ -10,9 +10,7 @@ const initializeAmpOutputs = function() {
   }, {});
 };
 
-let ampOutputs = initializeAmpOutputs();
-
-const getInputSignal = function(ampName, idx) {
+const getInputSignal = function(ampName, idx, ampOutputs) {
   const maxRetries = 200;
   let numRetries = 0;
   return new Promise(async (resolve, reject) => {
@@ -26,7 +24,7 @@ const getInputSignal = function(ampName, idx) {
         );
       }
       numRetries++;
-      await new Promise(resolve => setTimeout(resolve, 250));
+      await new Promise(resolve => setTimeout(resolve, 5));
     }
 
     resolve(ampOutputs[incomingAmpName][idx]);
@@ -48,7 +46,7 @@ const getOpcode = function(instructions, pointer) {
     .map(x => parseInt(x));
 };
 
-const runOpcode = async function(rawInstructions, ampName, phaseSetting, loopMode = false) {
+const runOpcode = async function(rawInstructions, ampName, phaseSetting, ampOutputs, loopMode = false) {
   const instructions = rawInstructions.split(',').map(code => parseInt(code));
   let instructionPointer = 0;
   let numInputRequests = 0;
@@ -70,7 +68,7 @@ const runOpcode = async function(rawInstructions, ampName, phaseSetting, loopMod
         input = 0;
       } else {
         const outputIdx = loopMode ? numInputRequests - (ampName === 'A' ? 2 : 1) : 0;
-        input = await getInputSignal(ampName, outputIdx);
+        input = await getInputSignal(ampName, outputIdx, ampOutputs);
       }
       numInputRequests++;
     }
@@ -121,23 +119,19 @@ const runInstruction = function(operation, parameters, instructions, input) {
   return null;
 };
 
-const findMaxThrusterSignal = async function(input, phaseValues, loopMode) {
+const findMaxThrusterSignal = async function(input, phaseValues, loopMode, outputMessage) {
   const phaseSettingSequences = permutations(phaseValues);
-  // const phaseSettingSequences = [
-  //   [0, 1, 2, 3, 4],
-  //   [2, 0, 1, 4, 3]
-  // ];
 
   let maxThrusterSignal = Number.MIN_SAFE_INTEGER;
   await phaseSettingSequences.reduce(async (previousPromise, phaseSettingSequence) => {
     await previousPromise;
-    ampOutputs = initializeAmpOutputs();
+    let ampOutputs = initializeAmpOutputs();
     await Promise.all([
-      runOpcode(input, ampNames[0], phaseSettingSequence[0], loopMode),
-      runOpcode(input, ampNames[1], phaseSettingSequence[1], loopMode),
-      runOpcode(input, ampNames[2], phaseSettingSequence[2], loopMode),
-      runOpcode(input, ampNames[3], phaseSettingSequence[3], loopMode),
-      runOpcode(input, ampNames[4], phaseSettingSequence[4], loopMode)
+      runOpcode(input, ampNames[0], phaseSettingSequence[0], ampOutputs, loopMode),
+      runOpcode(input, ampNames[1], phaseSettingSequence[1], ampOutputs, loopMode),
+      runOpcode(input, ampNames[2], phaseSettingSequence[2], ampOutputs, loopMode),
+      runOpcode(input, ampNames[3], phaseSettingSequence[3], ampOutputs, loopMode),
+      runOpcode(input, ampNames[4], phaseSettingSequence[4], ampOutputs, loopMode)
     ])
       .then(outputs => {
         const outputE = outputs.pop().pop();
@@ -148,24 +142,25 @@ const findMaxThrusterSignal = async function(input, phaseValues, loopMode) {
       });
   }, Promise.resolve());
 
-  console.log(`Max Thruster Signal => ${maxThrusterSignal}`);
+  // Handlebars is synchronous, so the puzzle answer will not be rendered
+  console.log(`${outputMessage}${maxThrusterSignal}`);
   return maxThrusterSignal;
 };
 
 const findMaxThrusterSignalLowPhases = function(input) {
   const phaseValues = [0, 1, 2, 3, 4];
-  findMaxThrusterSignal(input, phaseValues, false);
-  return '[...see console log for answer]';
+  findMaxThrusterSignal(input, phaseValues, false, 'Part 1: The puzzle answer is ');
+  return 'available in the console log';
 };
 
 const findMaxThrusterSignalHighPhases = function(input) {
   const phaseValues = [5, 6, 7, 8, 9];
-  findMaxThrusterSignal(input, phaseValues, true);
-  return '[...see console log for answer]';
+  findMaxThrusterSignal(input, phaseValues, true, 'Part 2: The puzzle answer is ');
+  return 'available in the console log';
 };
 
 module.exports = {
   findMaxThrusterSignal,
   p1Solution: findMaxThrusterSignalLowPhases,
-  p2Solution: () => '???'
+  p2Solution: findMaxThrusterSignalHighPhases
 };
