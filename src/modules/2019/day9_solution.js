@@ -1,13 +1,22 @@
 const runOpcode = require('./day5_solution').runOpcode;
 
-const produceBOOSTKeycode = function(input) {
-  // Too Low: 203
-  const testModeInput = 1;
-  const outputs = runOpcode(input, testModeInput);
+const produceBOOSTKeycode = function(program, inputInstruction) {
+  const outputs = runOpcode(program, inputInstruction);
   return outputs[outputs.length - 1];
 };
 
+const testBOOSTWith1 = function(input) {
+  const testModeInput = 1;
+  return produceBOOSTKeycode(input, testModeInput);
+};
+
+const testBOOSTWith2 = function(input) {
+  const testModeInput = 2;
+  return produceBOOSTKeycode(input, testModeInput);
+};
+
 module.exports = {
-  p1Solution: produceBOOSTKeycode,
-  p2Solution: () => '???'
+  produceBOOSTKeycode,
+  p1Solution: testBOOSTWith1,
+  p2Solution: testBOOSTWith2
 };
