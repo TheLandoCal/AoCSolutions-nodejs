@@ -36,8 +36,9 @@ function getPuzzleByDay(year, day) {
   return {
     p1Solution: solutions.p1Solution(puzzle.input),
     p2Solution: solutions.p2Solution(puzzle.input),
-    dayTitle: puzzle.title,
-    dayNumber: puzzle.day,
+    puzzleTitle: puzzle.title,
+    puzzleDay: puzzle.day,
+    puzzleYear: puzzle.year,
     days2015: loadPuzzlesByYear(puzzles, '2015'),
     days2016: loadPuzzlesByYear(puzzles, '2016'),
     days2017: loadPuzzlesByYear(puzzles, '2017'),
